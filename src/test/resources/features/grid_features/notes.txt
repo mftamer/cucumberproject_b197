@@ -1,0 +1,73 @@
+********* Selenium Grid Notes *********
+
+***** Selenium Grid nOTES *****
+
+1. Prerequisites
+  * Java 11 or higher installed
+  * Browser(s) installed
+  * Browser driver(s)
+  * Download the Selenium Server jar file from the latest release
+  * Start the Grid
+  * java -jar selenium-server-<version>.jar standalone
+  * Point* your WebDriver tests to http://localhost:4444
+  * (Optional) Check running tests and available capabilities by opening your browser at http://localhost:4444
+
+-------------------
+2. Create a folder called SeleniumServer under the project
+
+-----------------
+3. Download all below nad move them to SeleniumServer folder. Make sure they are out of zip folders.
+        ** Selenium Server : https://github.com/SeleniumHQ/selenium/releases/tag/selenium-4.17.0
+        ** Chrome driver: https://googlechromelabs.github.io/chrome-for-testing/
+        ** Firefox driver (gecko) : https://github.com/mozilla/geckodriver/releases
+
+------------------
+4. Start the grid from intelliJ terminal
+    ** From the terminal, navigate to SeleniumServer folder
+
+        *ls => list all child folders
+        *cd => command is used to change directory. We need to come into the SeleniumServer folder. so use:
+            cd SeleniumServer
+
+------------------
+  5. Run tests from Selenium Grid Standalone mode
+    java -jar selenium-server-<version>.jar standalone (from the grid docs). We need to provide the version we are using
+    java -jar selenium-server-4.17.0.jar standalone
+
+    Then we should see "Started Selenium Standalone 4.17.0" message
+
+    To stop running the grid, use "control+C"
+    To start again, use the "java -jar selenium-server-4.17.0.jar standalone" again
+
+------------------
+6. Create a feature file under grid_feature folder
+
+@grid
+Feature: grid_feature
+  Scenario: TC01_chrome_test
+    Given user navigates to "http://github.com" using "chrome" browser
+    Then verify the title contains "GitHub"
+    And close the remote driver
+
+------------------
+7.Create GridRunner class and remove Hooks from there.
+
+Note: You can run the @grid from normal runner as well to create the step definitions
+
+------------------
+8. Create GridStepDefs class in stepdefinitions folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
