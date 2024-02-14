@@ -1,0 +1,48 @@
+***** JDBC NOTES *****
+
+1. Add PostgreSQL JDBC dependency (according to your DataBase)
+2. Add DBUtils in utilities' package
+3. Create Feature file
+-----------------------------------------
+4. Create DBRunner (Optional but Recommended)
+package runners;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports.html",
+                "json:target/json-reports/cucumber.json",
+                "junit:target/xml-reports/cucumber.xml",
+                "rerun:target/failedRerun.txt",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        },
+        monochrome = true,
+        features = "./src/test/resources/features",
+        glue = {"stepdefinitions", "hooks"},
+        dryRun = true,
+        tags = "@user_login"
+)
+public class DBRunner {
+}
+-----------------------------------------
+5. Generate Step definitions
+package stepdefinitions;
+
+import io.cucumber.java.en.Given;
+
+public class DBStepDefs {
+
+    @Given("user connects to application database")
+    public void user_connects_to_application_database() {
+
+
+    }
+
+
+}
+
+6. Write your codes in Step definitions class

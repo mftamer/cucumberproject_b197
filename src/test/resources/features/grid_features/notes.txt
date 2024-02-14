@@ -12,6 +12,8 @@
   * Point* your WebDriver tests to http://localhost:4444
   * (Optional) Check running tests and available capabilities by opening your browser at http://localhost:4444
 
+  * (official documentation: https://www.selenium.dev/documentation/grid/getting_started/)
+
 -------------------
 2. Create a folder called SeleniumServer under the project
 
@@ -54,20 +56,79 @@ Feature: grid_feature
 
 Note: You can run the @grid from normal runner as well to create the step definitions
 
+package runners;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports.html",
+                "json:target/json-reports/cucumber.json",
+                "junit:target/xml-reports/cucumber.xml",
+                "rerun:target/failedRerun.txt",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        },
+        monochrome = true,
+        features = "./src/test/resources/features",
+        glue = "stepdefinitions",  //DO NOT use HOOKS here. Because HOOKS class has "Driver.closeDriver();" which can create a problem for remote driver
+        dryRun = true,
+        tags = "@grid"
+)
+public class GridRunner {
+}
+
 ------------------
 8. Create GridStepDefs class in stepdefinitions folder
 
+@Given("user navigates to {string} using {string} browser")
+public void user_navigates_to_using_browser(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("verify the title contains {string}")
+public void verify_the_title_contains(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("close the remote driver")
+public void close_the_remote_driver() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+------------------
+9. Complete the code
 
+------------------
+10. Run your tests from GridRunner. You should be able to open the remote driver and run tests remotely on different browsers
 
+NOTE: Grid uses REMOTE WEBDRIVER
 
+------------------
+KEY POINTS:
+    *What is Selenium Grid?
+        It is one of the components of Selenium => IDE, RC, WEBDRIVER, GRID
+    *What is it used for?
+        1. Cross-browser testing (chrome, firefox, edge, etc...)
+        2. Parallel testing
+        3. Remote testing
+        4. Can also run different operating systems as well as WINDOWS, iOS
+    *How did you use it?
+        I used Grid for cross-browser testing in my cucumber framework
+    *How did you run test cases using Grid?
+        I run test in Selenium Server using standalone mode,
+        I change directory using "cd SeleniumServer" command on terminal and run standalone command which initiated remote hub.
+        NOTE: There are three options in Grid: 1) standalone
+                                               2) Hub and Node
+                                               3) Distributed Mode
+    *What is HUB?
+        Hub is the central server that manages the modes. We can only have ONE Hub.
+    *What is Node?
+        Node is a virtual machine. We can have multiple nodes.
 
+------------------
+To stop running the Grid, use control + c
+To start again, use the java -jar selenium-server-4.17.0.jar standalone again.
 
-
-
-
-
-
-
-
-
-
+To come out of SeleniumServer directory and go back to project level: cd ..

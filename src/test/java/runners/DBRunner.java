@@ -2,6 +2,7 @@ package runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
@@ -14,9 +15,9 @@ import org.junit.runner.RunWith;
         },
         monochrome = true,
         features = "./src/test/resources/features",
-        glue = "stepdefinitions",  //DO NOT use HOOKS here. Because HOOKS class has "Driver.closeDriver();" which can create a problem for remote driver
+        glue = {"stepdefinitions", "hooks"},
         dryRun = false,
-        tags = "@grid"
+        tags = "@user_login"
 )
-public class GridRunner {
+public class DBRunner {
 }
