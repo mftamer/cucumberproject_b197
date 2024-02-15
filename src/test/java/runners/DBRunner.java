@@ -10,14 +10,14 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-reports/cucumber.xml",
-                "rerun:target/failedRerun.txt",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                "rerun:target/failedRerun.txt"
+          //      "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,
         features = "./src/test/resources/features",
-        glue = {"stepdefinitions", "hooks"},
+        glue = "stepdefinitions",
         dryRun = false,
-        tags = "@user_login"
+        tags = "@jdbc"
 )
 public class DBRunner {
 }

@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -17,7 +17,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="119e45e2-5bfd-42b7-bf1c-8f4e2a5aaf7a">
-      <console name="Batch197" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM jhi_user;]]></console>
+      <console name="Batch197" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM jhi_user;
+SELECT login FROM jhi_user;
+SELECT first_name FROM jhi_user;
+
+SELECT * FROM tp_account;
+SELECT account_type FROM tp_account;
+
+SELECT * FROM tp_employee;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
